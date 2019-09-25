@@ -1,0 +1,33 @@
+{
+    "name": "GenericControls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "a875812d-a189-4edc-9118-70e2865acb93",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "58e6d8b2-7cc6-48ed-bb2d-4ca4aea32c4e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0e0699ff-8d27-4d29-993f-b9cff38c62d5",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
