@@ -28,8 +28,6 @@ public class Philosopher : MonoBehaviour
         controller = FindObjectOfType<Controller>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //N = controller.number;
-       // states = controller.states;
         Debug.Log("Philospher " + name + " is thinking");   
     }
 
@@ -41,13 +39,18 @@ public class Philosopher : MonoBehaviour
             Move();
         }else if (controller.states[GetNumberOfChair(chair)] == "Hungry")
         {
-            
             TakeForks(chair);
-            Debug.Log("Ta tomando");
            
         }
 
-        
+        if (Input.ButtonIsDown() && aButton.activeSelf)
+        {
+            isEating = true;
+            TakeForks(chair);
+            
+        }
+
+
     }
 
     
@@ -57,30 +60,14 @@ public class Philosopher : MonoBehaviour
         {
             aButton.SetActive(true);
             chair = collision.gameObject;
+            
         }
-        
-        
-        
-        
-        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!isEating)
-        {
-            aButton.SetActive(true);
-            if (Input.ButtonIsDown())
-            {
-                isEating = true;
-                TakeForks(collision.gameObject);
-            }
-        }
-        else
+        if (isEating)
         {
             aButton.SetActive(false);
-            
-            
-            
         }
         
     }
@@ -99,19 +86,12 @@ public class Philosopher : MonoBehaviour
         animator.SetFloat("Horizontal", move.x);
         animator.SetFloat("Vertical", move.y);
         animator.SetFloat("speed", move.sqrMagnitude);
-
-        
-
-        
-
-
     }
 
     IEnumerator  Eat(int i)
     {
-        
-        yield return new WaitForSeconds(2);
         isEating = true;
+        yield return new WaitForSeconds(2);
         controller.dishes[i].GetComponent<Animator>().SetBool("red", false);
         controller.dishes[i].GetComponent<Animator>().SetBool("green", false);
         controller.dishes[i].GetComponent<Animator>().SetBool("white",true);
