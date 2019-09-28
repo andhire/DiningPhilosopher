@@ -7,6 +7,7 @@ public class PlayerToControll : MonoBehaviour
     private List<int> assignedControllers = new List<int>();
     public GameObject Phil;
     bool isPressed = false;
+    int numberOfPhilosophers = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,9 +45,35 @@ public class PlayerToControll : MonoBehaviour
     public void AssignController(int controller)
     {
         assignedControllers.Add(controller);
+        //Create player
         GameObject player = Instantiate(Phil);
-        Debug.Log(controller);
+
+        //Set color to each player
+        switch (numberOfPhilosophers)
+        {
+            case 0:
+                player.GetComponent<SpriteRenderer>().color = Color.blue;
+                break;
+
+            case 1:
+                player.GetComponent<SpriteRenderer>().color = Color.yellow;
+                break;
+
+            case 2:
+                player.GetComponent<SpriteRenderer>().color = Color.green;
+                break;
+            case 3:
+                player.GetComponent<SpriteRenderer>().color = Color.red;
+                break;
+            case 4:
+                break;
+
+        }
+        
+        player.GetComponent<Philosopher>().id = numberOfPhilosophers++;
+        //Set controller to his player
         player.GetComponent<Philosopher>().Input.SetControllerNumber(controller);
 
+        
     }
 }
