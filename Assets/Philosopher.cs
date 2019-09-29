@@ -46,6 +46,7 @@ public class Philosopher : MonoBehaviour
         if (Input.ButtonIsDown() && aButton.activeSelf)
         {
             isEating = true;
+            aButton.SetActive(false);
             TakeForks(chair);
             
         }
@@ -102,12 +103,10 @@ public class Philosopher : MonoBehaviour
     {
 
         int i = GetNumberOfChair(chair);
-        controller.mutex = 1;
         controller.dishes[i].GetComponent<Animator>().SetBool("white", false);
         controller.dishes[i].GetComponent<Animator>().SetBool("red", true);
         controller.states[i] = "Hungry";
         Check(i);
-        controller.mutex = 0;
         
         
         
@@ -116,9 +115,7 @@ public class Philosopher : MonoBehaviour
     {
         StopAllCoroutines();
         isEating = false;
-        controller.mutex = 1;
         controller.states[i] = "Thinking";
-        controller.mutex = 0;
         controller.forks[i].SetActive(true);
         controller.forks[(i + 1) % N].SetActive(true);
 

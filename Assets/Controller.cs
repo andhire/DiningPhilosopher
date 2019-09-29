@@ -7,8 +7,6 @@ public class Controller : MonoBehaviour
     public const int N = 5;
     public  int number = N;
     public string[] states = new string[N];
-    public int[] semaphore = new int[N];
-    public int mutex = 1;
 
     public GameObject[] forks;
     public GameObject[] dishes;
