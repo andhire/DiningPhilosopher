@@ -17,10 +17,12 @@ public class Producer : MonoBehaviour
     public GameObject chair;
     public GameObject pizzaObj;
     public GameObject pizzaCarring;
-    
+
+    private ProducerController controller;
     // Start is called before the first frame update
     void Start()
     {
+        controller = FindObjectOfType<ProducerController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -28,7 +30,15 @@ public class Producer : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
+        if((controller.BufferSize() > 0 && gameObject.name == "Consumer") || pizzaCarring != null)
+        {
+            Move();
+        }
+        if (controller.BufferSize() <3 && gameObject.name == "Producer")
+        {
+            Move();
+        }
+
         Check();
     }
 
@@ -71,7 +81,7 @@ public class Producer : MonoBehaviour
                 }
             }
 
-            if (chair.name == "ChairProducer" && gameObject.name == "Producer")
+            if (chair.name == "ChairProducer" && gameObject.name == "Producer" && pizzaCarring == null)
             {
                 if (Input.ButtonIsDown())
                 {
@@ -83,7 +93,7 @@ public class Producer : MonoBehaviour
 
             if (chair.name == "Buffer")
             {
-                if (Input.ButtonIsDown() && gameObject.name == "Producer" && !chair.GetComponent<Chair>().hasElement)
+                if (Input.ButtonIsDown() && gameObject.name == "Producer" && !chair.GetComponent<Chair>().hasElement && pizzaCarring!= null)
                 {
                     pizzaCarring.transform.SetParent(chair.transform);
                     pizzaCarring.transform.position = chair.transform.position;
@@ -91,7 +101,7 @@ public class Producer : MonoBehaviour
                     chair.GetComponent<Chair>().SetElement(pizzaCarring);
                     pizzaCarring = null;
                 }
-                if (Input.ButtonIsDown() && gameObject.name == "Consumer" && chair.GetComponent<Chair>().hasElement )
+                if (Input.ButtonIsDown() && gameObject.name == "Consumer" && chair.GetComponent<Chair>().hasElement  && pizzaCarring== null)
                 {
                     pizzaCarring = chair.GetComponent<Chair>().element;
                     pizzaCarring.transform.SetParent(transform);

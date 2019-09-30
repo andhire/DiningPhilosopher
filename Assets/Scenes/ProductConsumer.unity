@@ -355,6 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 529087444}
   - component: {fileID: 529087445}
+  - component: {fileID: 529087443}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -362,6 +363,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &529087443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529087442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b18a44fcb2a02948bd6e8ef1c9749c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffer:
+  - {fileID: 647081036}
+  - {fileID: 1707165509}
+  - {fileID: 1568409073}
 --- !u!4 &529087444
 Transform:
   m_ObjectHideFlags: 0
@@ -530,6 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasElement: 0
+  element: {fileID: 0}
 --- !u!1 &684927147
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +986,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049610157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.617, y: 0.032, z: 1.7290039}
+  m_LocalPosition: {x: -0.622, y: 0.005, z: 1.7290039}
   m_LocalScale: {x: 0.6356843, y: 0.5498, z: 1}
   m_Children: []
   m_Father: {fileID: 1058619304}
@@ -1468,6 +1486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasElement: 0
+  element: {fileID: 0}
 --- !u!1 &1576267124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576267124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.256, y: 0.033, z: 1.7290039}
+  m_LocalPosition: {x: -0.25500003, y: 0.0059999973, z: 1.7290039}
   m_LocalScale: {x: 0.6423, y: 0.5498, z: 1}
   m_Children: []
   m_Father: {fileID: 1058619304}
@@ -1594,7 +1613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606708800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.095, y: 0.039, z: 1.7290039}
+  m_LocalPosition: {x: 0.095999986, y: 0.011999998, z: 1.7290039}
   m_LocalScale: {x: 0.6356843, y: 0.5498, z: 1}
   m_Children: []
   m_Father: {fileID: 1058619304}
@@ -1876,6 +1895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasElement: 0
+  element: {fileID: 0}
 --- !u!1 &1773491943
 GameObject:
   m_ObjectHideFlags: 0
