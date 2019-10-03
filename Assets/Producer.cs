@@ -12,8 +12,9 @@ public class Producer : MonoBehaviour
     public InputPlayer Input;
     public GameObject aButton;
 
-    private bool isInChair;
-    private bool hasPizza;
+    public bool isInChair;
+    public bool hasPizza;
+    public bool isStop;
     public GameObject chair;
     public GameObject pizzaObj;
     public GameObject pizzaCarring;
@@ -25,16 +26,21 @@ public class Producer : MonoBehaviour
         controller = FindObjectOfType<ProducerController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if((controller.BufferSize() > 0 && gameObject.name == "Consumer") || pizzaCarring != null)
+        if((controller.BufferSize() > 0 && gameObject.name == "Consumer") || pizzaCarring != null )
         {
-            Move();
+            if (!isStop)
+            {
+                Move();
+            }
+            
         }
-        if (controller.BufferSize() <3 && gameObject.name == "Producer")
+        else if (controller.BufferSize() <3 && gameObject.name == "Producer" && !isStop)
         {
             Move();
         }
@@ -78,6 +84,7 @@ public class Producer : MonoBehaviour
                     
                     Destroy(pizzaCarring);
                     pizzaCarring = null;
+                    hasPizza = false;
                 }
             }
 
@@ -87,6 +94,7 @@ public class Producer : MonoBehaviour
                 {
                     GameObject pizza = Instantiate(pizzaObj, transform);
                     pizzaCarring = pizza;
+                    hasPizza = true;
                 }
                 
             }
@@ -100,6 +108,7 @@ public class Producer : MonoBehaviour
                     chair.GetComponent<Chair>().hasElement = true;
                     chair.GetComponent<Chair>().SetElement(pizzaCarring);
                     pizzaCarring = null;
+                    hasPizza = false;
                 }
                 if (Input.ButtonIsDown() && gameObject.name == "Consumer" && chair.GetComponent<Chair>().hasElement  && pizzaCarring== null)
                 {
@@ -107,6 +116,7 @@ public class Producer : MonoBehaviour
                     pizzaCarring.transform.SetParent(transform);
                     pizzaCarring.transform.position = transform.position;
                     chair.GetComponent<Chair>().hasElement = false;
+                    hasPizza = true;
                 }
             }
         }
